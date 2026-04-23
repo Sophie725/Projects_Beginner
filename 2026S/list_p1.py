@@ -100,6 +100,13 @@ def drop_range(start: int, end: int, l: list) -> list:
 
     return l
 
+def drop_threshold(threshold: int, l: list) -> list:
+    # This function should drop all the values in the list l that are 
+    # greater than or equal to the threshold and return the modified list.
+    # Fill in the code here
+
+    return l
+
 import random
 
 def main():
