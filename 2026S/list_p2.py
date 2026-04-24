@@ -5,6 +5,7 @@ def insert_first(l: list, v: int) -> list:
     # This function should insert the value 0 at the beginning of the list l
     # and return the modified list.
     # Fill in the code here
+    l.insert(0, 0)
     
     return l
 
@@ -12,6 +13,7 @@ def insert_last(l: list, v: int) -> list:
     # This function should insert the value 0 at the end of the list l
     # and return the modified list.
     # Fill in the code here
+    l.append(0)
     
     return l
 
@@ -19,6 +21,7 @@ def insert_at_index(l: list, v: int, i: int) -> list:
     # This function should insert the value 0 at the index i of the list l
     # and return the modified list.
     # Fill in the code here
+    l.insert(i, 0)
     
     return l
 
@@ -26,6 +29,9 @@ def insert_before_value(l: list, v: int, target: int) -> list:
     # This function should insert the value v before the first occurrence of 
     # the target value in the list l and return the modified list.
     # Fill in the code here
+    if target in l:
+        idx = l.index(target)
+        l.insert(idx, v)
     
     return l
 
@@ -33,6 +39,9 @@ def insert_after_value(l: list, v: int, target: int) -> list:
     # This function should insert the value v after the first occurrence of 
     # the target value in the list l and return the modified list.
     # Fill in the code here
+    if target in l:
+        idx = l.index(target)
+        l.insert(idx + 1, v)
     
     return l
 
@@ -40,6 +49,8 @@ def insert_list(l1: list, l2: list, i: int) -> list:
     # This function should insert the list l2 into the list l1 at the index i
     # and return the modified list.
     # Fill in the code here
+    l1[i:i] = l2
+    # replace the ith index to ith index of l1 list with the content of l2 list
     
     return l1
 
