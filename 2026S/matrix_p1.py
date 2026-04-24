@@ -5,6 +5,8 @@ def drop_first_row(matrix: list[list]) -> list[list]:
     # This function should drop the first row of the matrix 
     # and return the modified matrix.
     # Fill in the code here
+    if matrix: # to check whether a matrix is empty or not
+        matrix.pop(0)
 
     return matrix
 
@@ -12,6 +14,8 @@ def drop_last_row(matrix: list[list]) -> list[list]:
     # This function should drop the last row of the matrix
     # and return the modified matrix.
     # Fill in the code here
+    if matrix:
+        matrix.pop(-1)
 
     return matrix
 
@@ -21,7 +25,11 @@ def drop_row(matrix: list[list], i: int) -> list[list]:
     # Your code should be able to handle errors, 
     # such as i being out of bounds or the matrix being empty.
     # Fill in the code here
-
+    if (not matrix) or (i < 0) or (i >= len(matrix)):
+        print("Error")
+    else:
+        matrix.pop(i)
+    
     return matrix
 
 def drop_rows_range(matrix: list[list], start: int, end: int) -> list[list]:
@@ -30,6 +38,10 @@ def drop_rows_range(matrix: list[list], start: int, end: int) -> list[list]:
     # Your code should be able to handle errors, 
     # such as start or end being out of bounds or the matrix being empty.
     # Fill in the code here
+    if (not matrix) or (start < 0) or (end >= len(matrix)) or (start > end):
+        print("Error")
+    else:
+        del matrix[start:end+1]
 
     return matrix
 
@@ -37,6 +49,7 @@ def drop_row_if_value(matrix: list[list], value) -> list[list]:
     # This function should drop all rows that contain the value
     # and return the modified matrix.
     # Fill in the code here
+    matrix
 
     return matrix
 
