@@ -95,7 +95,6 @@ def drop_col(matrix: list[list], j: int) -> list[list]:
         return matrix
         
     for i in range(len(matrix)):
-        # j번째 값만 쏙 빼고 다시 합치기
         left = matrix[i][:j]
         right = matrix[i][j+1:]
         matrix[i] = left + right
@@ -108,8 +107,23 @@ def drop_cols_range(matrix: list[list], start: int, end: int) -> list[list]:
     # Your code should be able to handle errors,
     # such as start or end being out of bounds or the matrix being empty.
     # Fill in the code here
+    if not matrix or not matrix[0]:
+        return matrix
+    
+    num_cols = len(matrix[0])
+    
+    start = max(0, start)
+    end = min(num_cols - 1, end)
+    
+    if start > end:
+        return matrix
 
-    return matrix
+    new_matrix = []
+    for row in matrix:
+        new_row = row[:start] + row[end + 1:]
+        new_matrix.append(new_row)
+        
+    return new_matrix
 
 def drop_col_if_value(matrix: list[list], value) -> list[list]:
     # This function should drop all columns that contain the value
@@ -117,23 +131,13 @@ def drop_col_if_value(matrix: list[list], value) -> list[list]:
     # Fill in the code here
     if not matrix:
         return matrix
-    
-    # 1. 먼저 어떤 열을 지워야 할지 인덱스 번호를 수집
-    cols_to_delete = []
+
     num_cols = len(matrix[0])
-    for j in range(num_cols):
-        for i in range(len(matrix)):
-            if matrix[i][j] == value:
-                cols_to_delete.append(j)
-                break # 해당 열에 값이 하나라도 있으면 다음 열로
-    
-    # 2. 수집된 인덱스를 제외하고 새로운 행 구성 (역순 삭제 권장하나 새 리스트가 안전)
-    for i in range(len(matrix)):
-        new_row = []
-        for j in range(num_cols):
-            if j not in cols_to_delete:
-                new_row.append(matrix[i][j])
-        matrix[i] = new_row
+    # 1. 지워야 할 열 번호 찾기
+    cols_to_delete = {j for j in range(num_cols) if any(row[j] == value for row in matrix)}
+
+    # 2. 기존 matrix 변수에 새 결과물을 덮어씌우기
+    matrix = [[row[j] for j in range(num_cols) if j not in cols_to_delete] for row in matrix]
         
     return matrix
 
