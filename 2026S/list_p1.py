@@ -104,6 +104,10 @@ def drop_threshold(threshold: int, l: list) -> list:
     # This function should drop all the values in the list l that are 
     # greater than or equal to the threshold and return the modified list.
     # Fill in the code here
+    result = []
+    for x in l:
+        if x < threshold:
+            result.append(x)
 
     return l
 
