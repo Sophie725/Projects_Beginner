@@ -63,7 +63,11 @@ def drop_row_threshold(matrix: list[list], threshold: int) -> list[list]:
     # and return the modified matrix.
     # Fill in the code here
     i = 0
-   ....don't know
+    while i < len(matrix):
+       if any(item > threshold for item in matrix[i]) > threshold:
+           matrix.pop(i)
+       else:
+           i += 1
 
     return matrix
 
