@@ -3,8 +3,10 @@
 
 def replace_extension(file_name: str, new_extension: str) -> str:
     # This function should replace the extension of the file name with the new extension and return the modified file name.
-    # Fill in the code here
-    
+    # Fill in the code here'
+    file_name_list = file_name.split('.')
+    new_file_name = file_name.replace(file_name_list[-1], new_extension)
+
     return new_file_name
     
 def generate_file_name() -> list[str]:
@@ -18,6 +20,11 @@ def generate_file_name() -> list[str]:
     date_list = ["20250828", "20250902"]
     birdID_list = ["GG", "GB", "YB", "YY", "RY"]
     type_list = ["VID", "GRF"]
+    for date in date_list:
+        for birdID in birdID_list:
+            for type in type_list:
+                for i in range(1, 7):
+                    print(f"{date}_{birdID}T00{i}_{type}")
     
     return file_names
 
@@ -29,5 +36,10 @@ def filter_file_names()->list[str]:
     # Fill in the code here
     file_names = generate_file_name()
     target_type = "GRF"
-    
+    new_file_name = file_names.split("_")
+    filtered_file_names = []
+    for file_name in file_names:
+        if (new_file_name[-1] == "GRF") and (new_file_name[1] == "T001"):
+            filtered_file_names.append(file_name)
+   
     return filtered_file_names
