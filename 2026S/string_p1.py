@@ -24,7 +24,8 @@ def generate_file_name() -> list[str]:
         for birdID in birdID_list:
             for type in type_list:
                 for i in range(1, 7):
-                    print(f"{date}_{birdID}T00{i}_{type}")
+                    print(f"{date}_{birdID}_T00{i}_{type}")
+                    file_names.append(f"{date}_{birdID}_T00{i}_{type}")
     
     return file_names
 
