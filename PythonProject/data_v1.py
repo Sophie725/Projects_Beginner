@@ -24,7 +24,8 @@ noise_resampled = resample(noise_ref_raw, num_samples_new)
 # Extract only the second part (the footstep)
 start_idx, end_idx = 755*3, 838*3
 d = noisy_fz_full[start_idx:end_idx]      # Target Noisy Signal
-x = noise_resampled[:len(d)]              # Noise Reference Segment
+# x = noise_resampled[:len(d)]              # Noise Reference Segment
+x = noise_ref_raw[10190:10500]
 
 # --- 3. ADAPTIVE NOISE CANCELLATION (LMS) ---
 def lms_anc(x, d, mu=0.02, order=32):
